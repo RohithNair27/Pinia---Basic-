@@ -18,6 +18,7 @@
       :key="eachtask.id"
       :onClickLike="onClickLiked"
       :onClickDelete="onClickDelete"
+      :onClickComplete='onCompleteTask'
     />
   </div>
 </template>
@@ -77,6 +78,11 @@ export default {
       taskStore.deleteTask(id);
       this.addElementToStoreOnLoad();
     },
+    onCompleteTask(id){
+      const taskStore = useTaskStore();
+      taskStore.completeTask(id);
+      this.addElementToStoreOnLoad();
+    }
   },
   beforeMount() {
     this.addElementToStoreOnLoad();
@@ -91,11 +97,12 @@ export default {
 <style>
 .list-body {
   padding-top: 20px;
-
+  min-height: 100vh;
   height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white
 }
 .list-component {
   display: flex;

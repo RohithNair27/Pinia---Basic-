@@ -1,9 +1,12 @@
 <template>
   <div class="taskContainer">
-    <span>{{ task.task }}</span>
+    <div class="taskStartContainer">
+      <div class="completeCircle" @click="onClickComplete(task.id)" :style="styleCompleteTask"></div>
+      <span v-bind:style="styleCompletedTask">{{ task.task }}</span>
+    </div>
     <div class="icons">
       <i class="material-icons" @click="onClickDelete(task.id)">delete</i>
-      <i class="material-icons" @click="onClickLike(task.id)" :style="styles"
+      <i class="material-icons" @click="onClickLike(task.id)" :style="stylesLiked"
         >favorite</i
       >
     </div>
@@ -12,15 +15,29 @@
 
 <script>
 export default {
-  props: ["task", "onClickLike", "onClickDelete"],
+  props: ["task", "onClickLike", "onClickDelete","onClickComplete"],
   computed: {
-    styles() {
+    stylesLiked() {
       if (this.task.isLiked) {
         return "color: red";
       } else {
         return "color:gray";
       }
     },
+    styleCompletedTask(){
+      if (this.task.isCompleted) {
+        return "text-decoration:line-through";
+      } else {
+        return "";
+      }
+    },
+    styleCompleteTask(){
+      if (this.task.isCompleted) {
+        return "background-color: #8ae99c;border:2px white solid";
+      } else {
+        return "background-color: white";
+      }
+    }
   },
 };
 </script>
@@ -28,19 +45,69 @@ export default {
 <style>
 .taskContainer {
   width: 40%;
+  min-width: 300px;
   align-self: center;
   height: 9vh;
   margin-top: 20px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
+  border: 2px solid #e7e7e7;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+
+}
+.taskContainer:hover{
+  background-color: #e7e7e7;
+  border: 2px solid #e7e7e7;
 }
 i {
   color: grey;
   cursor: pointer;
   margin-left: 10px;
 }
+.taskStartContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.completeCircle{
+  border:2px gray solid;
+  height: 15px;
+  width:15px;
+  border-radius:100px;
+  margin-right: 10px;
+  transition: border-color 0.3s ease;
+}
+.completeCircle:hover{
+  border: 2px solid #8ae99c;
+  transition: background-color 0.3s ease;
+
+}
+.taskStartContainer span{
+  width:300px;
+  white-space: nowrap;         /* Prevents text from wrapping */
+  overflow: hidden;            /* Hides the overflowing text */
+  text-overflow: ellipsis;     /* Adds "..." at the end of the text */
+}
+@media screen and (max-width:1200px){
+  .taskStartContainer span{
+  width:200px;
+  white-space: nowrap;         /* Prevents text from wrapping */
+  overflow: hidden;            /* Hides the overflowing text */
+  text-overflow: ellipsis;     /* Adds "..." at the end of the text */
+}
+}
+
+@media screen and (max-width:300px){
+  .taskStartContainer span{
+  width:120px;
+  white-space: nowrap;         /* Prevents text from wrapping */
+  overflow: hidden;            /* Hides the overflowing text */
+  text-overflow: ellipsis;     /* Adds "..." at the end of the text */
+}
+}
+
 </style>

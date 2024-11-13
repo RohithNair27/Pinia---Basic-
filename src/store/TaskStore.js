@@ -20,8 +20,15 @@ export const useTaskStore = defineStore("Task-store", {
   actions: {
     addTask: function (newTask) {
       let newId = Math.floor(Math.random() * 10000);
-      let formatNewTask = { id: newId, task: newTask, isLiked: false };
+      let formatNewTask = { id: newId, task: newTask, isLiked: false,isCompleted:false };
       this.allTasks.push(formatNewTask);
+    },
+    completeTask:function(id){
+      this.allTasks.forEach((value)=>{
+        if(value.id===id){
+          value.isCompleted=!value.isCompleted;
+        }
+      })
     },
     changeIsLiked: function (id) {
       this.allTasks.forEach((value) => {

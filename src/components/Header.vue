@@ -1,12 +1,12 @@
 <template>
   <header>
     <section>
+      <h1>Pinia's daily logs</h1>
       <img src="../assets/Pinialogo.svg" alt="Pinia_Logo" />
-      <h1>Pinia - Todo</h1>
     </section>
     <form>
-      <input type="input" placeholder="enter your task" v-model="inputText" />
-      <button @click.prevent="addClick(inputText)">Add</button>
+      <input type="input" placeholder="I want to complete..." v-model="inputText" />
+      <button @click.prevent="onClickAdd">Add</button>
     </form>
   </header>
 </template>
@@ -14,6 +14,12 @@
 <script>
 export default {
   props: ["addClick"],
+  methods: {
+    onClickAdd() {
+      this.addClick(this.inputText);
+      this.inputText = "";
+    },
+  },
   data: function dataFunction() {
     return {
       inputText: "",
@@ -25,11 +31,12 @@ export default {
 <style>
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background: #e7e7e7;
   flex-direction: column;
   height: fit-content;
+  min-height: 35vh;
   padding-bottom: 20px;
 }
 section {
@@ -40,17 +47,33 @@ section {
   flex-direction: row;
 
   width: 50%;
+  min-width: 300px;
 }
 input {
-  width: 20vw;
-  height: 5vh;
+  min-width: 300px;
+  height: 6vh;
+  padding-left:10px;
+  border-radius: 10px;
+  outline:none;
+  border:2px solid gray;
+  transition: border-color 0.3s ease
+}
+input:focus{
+  outline: none;
+border: 2px solid #3ac553;
+
 }
 button {
-  width: 5vw;
-  height: 5vh;
+  width: 80px;
+  height: 6vh;
   margin-left: 10px;
   background-color: #ffd450;
   color: white;
   border: none;
+}
+@media screen and (max-width: 400px){
+  input{
+    min-width:150px
+  }
 }
 </style>
