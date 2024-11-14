@@ -26,7 +26,7 @@ export default {
     },
     styleCompletedTask(){
       if (this.task.isCompleted) {
-        return "text-decoration:line-through";
+        return "text-decoration:line-through;color:gray;";
       } else {
         return "";
       }
@@ -47,7 +47,7 @@ export default {
   width: 40%;
   min-width: 300px;
   align-self: center;
-  height: 9vh;
+  height: 50px;
   margin-top: 20px;
   display: flex;
   align-items: center;

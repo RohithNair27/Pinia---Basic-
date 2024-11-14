@@ -97,7 +97,6 @@ export default {
 <style>
 .list-body {
   padding-top: 20px;
-  min-height: 100vh;
   height: fit-content;
   display: flex;
   flex-direction: column;

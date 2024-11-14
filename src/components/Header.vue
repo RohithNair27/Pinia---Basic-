@@ -50,8 +50,8 @@ section {
   min-width: 300px;
 }
 input {
-  min-width: 300px;
-  height: 6vh;
+  min-width: 400px;
+  height: 40px;
   padding-left:10px;
   border-radius: 10px;
   outline:none;
