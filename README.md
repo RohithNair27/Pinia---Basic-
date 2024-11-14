@@ -1,5 +1,9 @@
-# Vue 3 + Vite
+# Vue + Pinia 
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+*Sample app made while learning Pinia.*
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+<img src="https://github.com/user-attachments/assets/aaf295c1-6aaf-4861-be5b-f330cb52ea95" alt="Sample App Made While Learning Pinia" width="800" height="700"/>
+
+This repository is intended for learning purposes, and I will continue to add new features and concepts as I explore and deepen my understanding of Vue. Feel free to refer if u have doubts. 
+
+
