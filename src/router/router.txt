@@ -1,0 +1,31 @@
+Single page application - 
+So we send a initial request and we get back a empty html file and a vueJS bundle, 
+this JS bundle mounts the app.vue on top of the html and then change the screen on it 
+
+
+Why using Router-link and not anchor tag -
+This is becuase vue, won't be able to do its prime work of not allowing 
+the request to go to server, the anchor tag, is not caught by the vue router 
+and the requrest is sent to server. 
+
+What is this Histroy in createRouter?
+So as we know vue is a single page application and it is hard for the browser to track what changes are made by JS.
+Even though the page doesn't reload, the URL still needs to change to reflect the different 
+views or states the user is in. The history in Vue Router handles this URL management. 
+It ensures that the changes you make inside the app (by updating the content dynamically) 
+are also reflected in the browser’s URL, so the user’s current state in the app is 
+properly tracked and accessible. ( helps SPA to work like normal traditional web apps ).
+
+
+createWebHistory() - 
+this is the "clean" URL mode. When you use HTML5 history mode, 
+the URLs look like regular web addresses without any extra # symbol.
+Example URL: /about or /profile/123
+These types of urls are very easy for Search enginers to understand ( Good SEO)
+
+createWebHashHistory()-
+the URL includes a # symbol to separate the actual page path from the routing part. 
+This was used in older single-page apps before HTML5 support was more common.
+Example URL: /about#profile or /home#section1
+They don't use the latest HTML5 Histry API 
+Browsers find it hard to read these URLs ( hence won't come up on top while searching )
